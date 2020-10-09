@@ -51,6 +51,8 @@ export default {
 
     //由于我们不能在setup函数中使用data和methods,所以Vue为了避免我们错误的使用，它直接将在setup函数中
     //this修改成了undefined
+
+    //setup只能是同步的，不能是异步的
   },
 };
 function useRemoveStudent() {
