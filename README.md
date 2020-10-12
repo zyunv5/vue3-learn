@@ -332,3 +332,75 @@ export default {
   },
 };
 ```
+## readonly
+通过readonly创建的数据是只读数据，并且是递归只读
+```js
+import { readonly } from "vue";
+export default {
+  name: "App",
+  setup() {
+    let state = readonly({ name: "abc", attr: { age: 19, height: 1.88 } });
+    function myFn(){
+      state.name="mmm"
+    }
+    return { state,myFn };
+  },
+};
+```
+通过shallowReadonly是只读数据，但是只是第一层只读
+## Vue响应式数据本质
+通过Proxy实现响应式数据
+
+# Vue3.0项目实战-黑马电影WebApp
+[Vue3.0项目实战-黑马电影WebApp](https://www.bilibili.com/video/BV1ui4y137WP?p=2)
+## 父子组件传值
+父组件
+```js
+//App.vue
+import { reactive } from "vue";
+import Child from "./components/Child.vue";
+export default {
+  name: "App",
+  setup() {
+    const state = reactive({
+      stus: [
+        { id: 1, name: "aa", age: 10 },
+        { id: 2, name: "bb", age: 20 },
+        { id: 3, name: "cc", age: 30 },
+      ],
+      msg2: "12306",
+    });
+    const removeItem = (index) => {
+      this.stus.splice(index, 1);
+    };
+    return { state, removeItem };
+  },
+  components: {
+    Child,
+  },
+};
+
+//子组件
+<template>
+  <div>
+    <div>{{ state.myMsg }}</div>
+    <button>按钮</button>
+  </div>
+</template>
+<script>
+import { reactive } from "vue";
+export default {
+  props: ["msg"],
+  
+  setup(props) {
+    const state = reactive({
+      myMsg: props.msg,
+    });
+    return { state };
+  },
+};
+</script>
+```
+
+
+
