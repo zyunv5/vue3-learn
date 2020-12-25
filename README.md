@@ -401,6 +401,33 @@ export default {
 };
 </script>
 ```
+# 上ts
+yarn add typescript -D
+tsc --ini
+
+根目录下新建vue.d.ts文件
+```js
+declare module '*.vue' {
+  import { Component } from 'vue'
+  const component: Component
+  export default component
+}
+```
+//安装vuex和vue-router
+yarn add vuex@4 vue-router@4 --save
+这里发现，好像插件少了点儿什么，换！
+# vue-next
+因为上面的问题，用别的脚手架
+
+~~[vue-next](https://github.com/vuejs/vue-next)~~
+~~先安装 vite~~
+~~npm i vite~~
+~~创建项目：~~
+~~npm init vite-app hello-vue3 # OR yarn create vite-app hello-vue3~~
+
+升级vue-cli脚手架，搭建vue3
+
+
 
 
 
